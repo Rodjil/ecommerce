@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
+import db.mysqlcon;
+
 /**
  *
  * @author REDMIBOOK
@@ -14,9 +16,8 @@ public class Ecommerce {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //sagsagsjagsjagsjagsagjs
-        System.out.println("asjdjabdjabdja");
+        mysqlcon.connect();
+
 
         // ssodosdiosdi
     }
