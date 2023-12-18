@@ -2,6 +2,9 @@ package db;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 public class mysqlcon {
@@ -43,4 +46,36 @@ public class mysqlcon {
         } 
     }
 
+    public static ResultSet getQuery(String query) throws SQLException, ClassNotFoundException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            Class.forName(MYSQL_JDBC_DRIVER_CLASS);
+
+            connection = DriverManager.getConnection(MYSQL_DB_URL, MYSQL_DB_USER, MYSQL_DB_USER_PASSWORD);
+
+            statement = connection.prepareStatement(query);
+
+            resultSet = statement.executeQuery();
+
+            return resultSet;
+        } finally {
+            System.out.println("re");
+
+
+        }
+    }
+
+    // public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    //    ResultSet data = getQuery("select * from tbl_users");
+
+    //         while (data.next()) {
+    //             System.out.println(data.getString(1));
+
+    //         }
+    //         //    data.close();
+
+    // }
 }
