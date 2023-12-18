@@ -59,10 +59,34 @@ public class mysqlcon {
             statement = connection.prepareStatement(query);
 
             resultSet = statement.executeQuery();
-
+            resultSet = (resultSet == null) ? null : resultSet;
             return resultSet;
         } finally {
-            System.out.println("re");
+            System.out.println();
+        }
+    }
+
+
+    public static void initQuery(String query) throws SQLException, ClassNotFoundException{
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            Class.forName(MYSQL_JDBC_DRIVER_CLASS);
+
+            connection = DriverManager.getConnection(MYSQL_DB_URL, MYSQL_DB_USER, MYSQL_DB_USER_PASSWORD);
+
+            statement = connection.createStatement();
+
+            statement.executeUpdate(query);
+        } finally {
+
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
 
 
         }
